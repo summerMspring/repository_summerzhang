@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fubt.SaasChargeModule.provider.copartner.mapper.CopartnerRoleMapper">
+  <resultMap id="BaseResultMap" type="com.fubt.SaasChargeModule.api.copartner.model.CopartnerRole">
+    <id column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="participate_coin" jdbcType="VARCHAR" property="participateCoin" />
+    <result column="back_coin" jdbcType="VARCHAR" property="backCoin" />
+    <result column="upgrade_coin_id" jdbcType="BIGINT" property="upgradeCoinId" />
+    <result column="upgrade_cost" jdbcType="DECIMAL" property="upgradeCost" />
+    <result column="upgrade_invite" jdbcType="INTEGER" property="upgradeInvite" />
+    <result column="give_nonth" jdbcType="INTEGER" property="giveNonth" />
+    <result column="valid_nonth" jdbcType="INTEGER" property="validNonth" />
+    <result column="share_rate" jdbcType="DECIMAL" property="shareRate" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="handle_time" jdbcType="TIMESTAMP" property="handleTime" />
+    <result column="handle_id" jdbcType="BIGINT" property="handleId" />
+    <result column="handle_name" jdbcType="VARCHAR" property="handleName" />
+    <result column="partner_id" jdbcType="BIGINT" property="partnerId" />
+    <result column="child_roleid" jdbcType="BIGINT" property="childRoleid" />
+    <result column="parent_roleid" jdbcType="BIGINT" property="parentRoleid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_id, role_name, participate_coin, back_coin, upgrade_coin_id, upgrade_cost, upgrade_invite, 
+    give_nonth, valid_nonth, share_rate, delete_status, create_time, handle_time, handle_id, 
+    handle_name, partner_id, child_roleid, parent_roleid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from copartner_role
+    where role_id = #{roleId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from copartner_role
+    where role_id = #{roleId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fubt.SaasChargeModule.api.copartner.model.CopartnerRole">
+    insert into copartner_role (role_id, role_name, participate_coin, 
+      back_coin, upgrade_coin_id, upgrade_cost, 
+      upgrade_invite, give_nonth, valid_nonth, 
+      share_rate, delete_status, create_time, 
+      handle_time, handle_id, handle_name, 
+      partner_id, child_roleid, parent_roleid
+      )
+    values (#{roleId,jdbcType=BIGINT}, #{roleName,jdbcType=VARCHAR}, #{participateCoin,jdbcType=VARCHAR}, 
+      #{backCoin,jdbcType=VARCHAR}, #{upgradeCoinId,jdbcType=BIGINT}, #{upgradeCost,jdbcType=DECIMAL}, 
+      #{upgradeInvite,jdbcType=INTEGER}, #{giveNonth,jdbcType=INTEGER}, #{validNonth,jdbcType=INTEGER}, 
+      #{shareRate,jdbcType=DECIMAL}, #{deleteStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{handleTime,jdbcType=TIMESTAMP}, #{handleId,jdbcType=BIGINT}, #{handleName,jdbcType=VARCHAR}, 
+      #{partnerId,jdbcType=BIGINT}, #{childRoleid,jdbcType=BIGINT}, #{parentRoleid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fubt.SaasChargeModule.api.copartner.model.CopartnerRole">
+    insert into copartner_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="roleName != null">
+        role_name,
+      </if>
+      <if test="participateCoin != null">
+        participate_coin,
+      </if>
+      <if test="backCoin != null">
+        back_coin,
+      </if>
+      <if test="upgradeCoinId != null">
+        upgrade_coin_id,
+      </if>
+      <if test="upgradeCost != null">
+        upgrade_cost,
+      </if>
+      <if test="upgradeInvite != null">
+        upgrade_invite,
+      </if>
+      <if test="giveNonth != null">
+        give_nonth,
+      </if>
+      <if test="validNonth != null">
+        valid_nonth,
+      </if>
+      <if test="shareRate != null">
+        share_rate,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="handleTime != null">
+        handle_time,
+      </if>
+      <if test="handleId != null">
+        handle_id,
+      </if>
+      <if test="handleName != null">
+        handle_name,
+      </if>
+      <if test="partnerId != null">
+        partner_id,
+      </if>
+      <if test="childRoleid != null">
+        child_roleid,
+      </if>
+      <if test="parentRoleid != null">
+        parent_roleid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="participateCoin != null">
+        #{participateCoin,jdbcType=VARCHAR},
+      </if>
+      <if test="backCoin != null">
+        #{backCoin,jdbcType=VARCHAR},
+      </if>
+      <if test="upgradeCoinId != null">
+        #{upgradeCoinId,jdbcType=BIGINT},
+      </if>
+      <if test="upgradeCost != null">
+        #{upgradeCost,jdbcType=DECIMAL},
+      </if>
+      <if test="upgradeInvite != null">
+        #{upgradeInvite,jdbcType=INTEGER},
+      </if>
+      <if test="giveNonth != null">
+        #{giveNonth,jdbcType=INTEGER},
+      </if>
+      <if test="validNonth != null">
+        #{validNonth,jdbcType=INTEGER},
+      </if>
+      <if test="shareRate != null">
+        #{shareRate,jdbcType=DECIMAL},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleTime != null">
+        #{handleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleId != null">
+        #{handleId,jdbcType=BIGINT},
+      </if>
+      <if test="handleName != null">
+        #{handleName,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null">
+        #{partnerId,jdbcType=BIGINT},
+      </if>
+      <if test="childRoleid != null">
+        #{childRoleid,jdbcType=BIGINT},
+      </if>
+      <if test="parentRoleid != null">
+        #{parentRoleid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fubt.SaasChargeModule.api.copartner.model.CopartnerRole">
+    update copartner_role
+    <set>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="participateCoin != null">
+        participate_coin = #{participateCoin,jdbcType=VARCHAR},
+      </if>
+      <if test="backCoin != null">
+        back_coin = #{backCoin,jdbcType=VARCHAR},
+      </if>
+      <if test="upgradeCoinId != null">
+        upgrade_coin_id = #{upgradeCoinId,jdbcType=BIGINT},
+      </if>
+      <if test="upgradeCost != null">
+        upgrade_cost = #{upgradeCost,jdbcType=DECIMAL},
+      </if>
+      <if test="upgradeInvite != null">
+        upgrade_invite = #{upgradeInvite,jdbcType=INTEGER},
+      </if>
+      <if test="giveNonth != null">
+        give_nonth = #{giveNonth,jdbcType=INTEGER},
+      </if>
+      <if test="validNonth != null">
+        valid_nonth = #{validNonth,jdbcType=INTEGER},
+      </if>
+      <if test="shareRate != null">
+        share_rate = #{shareRate,jdbcType=DECIMAL},
+      </if>
+      <if test="deleteStatus != null">
+        delete_status = #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleTime != null">
+        handle_time = #{handleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleId != null">
+        handle_id = #{handleId,jdbcType=BIGINT},
+      </if>
+      <if test="handleName != null">
+        handle_name = #{handleName,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null">
+        partner_id = #{partnerId,jdbcType=BIGINT},
+      </if>
+      <if test="childRoleid != null">
+        child_roleid = #{childRoleid,jdbcType=BIGINT},
+      </if>
+      <if test="parentRoleid != null">
+        parent_roleid = #{parentRoleid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fubt.SaasChargeModule.api.copartner.model.CopartnerRole">
+    update copartner_role
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      participate_coin = #{participateCoin,jdbcType=VARCHAR},
+      back_coin = #{backCoin,jdbcType=VARCHAR},
+      upgrade_coin_id = #{upgradeCoinId,jdbcType=BIGINT},
+      upgrade_cost = #{upgradeCost,jdbcType=DECIMAL},
+      upgrade_invite = #{upgradeInvite,jdbcType=INTEGER},
+      give_nonth = #{giveNonth,jdbcType=INTEGER},
+      valid_nonth = #{validNonth,jdbcType=INTEGER},
+      share_rate = #{shareRate,jdbcType=DECIMAL},
+      delete_status = #{deleteStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      handle_time = #{handleTime,jdbcType=TIMESTAMP},
+      handle_id = #{handleId,jdbcType=BIGINT},
+      handle_name = #{handleName,jdbcType=VARCHAR},
+      partner_id = #{partnerId,jdbcType=BIGINT},
+      child_roleid = #{childRoleid,jdbcType=BIGINT},
+      parent_roleid = #{parentRoleid,jdbcType=BIGINT}
+    where role_id = #{roleId,jdbcType=BIGINT}
+  </update>
+
+  <select id="findByChildId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    copartner_role
+    where
+    deleteStatus=0
+    and
+    child_roleid=#{childRoleId,jdbcType=BIGINT}
+    and
+    partner_id=#{partnerId,jdbcType=BIGINT}
+  </select>
+
+  <select id="findList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    copartner_role
+    where
+    deleteStatus=0
+    and
+    partner_id=#{partnerId,jdbcType=BIGINT}
+  </select>
+</mapper>
