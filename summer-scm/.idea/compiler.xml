@@ -11,4 +11,10 @@
       </profile>
     </annotationProcessing>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="scm-api" options="-parameters" />
+      <module name="scm-provider" options="-parameters" />
+    </option>
+  </component>
 </project>
